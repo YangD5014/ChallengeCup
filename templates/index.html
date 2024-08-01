@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>量子视界--量子图像应用工具箱</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>量子视界--量子图像应用展示</h1>
+    </header>
+    <main>
+        <div class="demo-container">
+            <a href="demo1.html" class="demo-block">
+                <h2>量子图像去噪算法</h2>
+            </a>
+            <a href="QJPEG.html" class="demo-block">
+                <h2>量子图像压缩算法</h2>
+            </a>
+            <a href="demo3.html" class="demo-block">
+                <h2>量子图像生成算法</h2>
+            </a>
+            <a href="demo4.html" class="demo-block">
+                <h2>量子图像分类算法</h2>
+            </a>
+        </div>
+    </main>
+</body>
+<style>
+    /* 基本样式重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+}
+
+header {
+    background: #333;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 0;
+}
+
+.main {
+    padding: 20px;
+}
+
+.demo-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.demo-block {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    padding: 20px;
+    width: calc(50% - 40px); /* 适应2x2排列 */
+    min-width: 200px;
+    text-decoration: none;
+    color: #333;
+    transition: transform 0.2s ease-in-out;
+}
+
+.demo-block h2 {
+    margin-bottom: 10px;
+}
+
+.demo-block:hover {
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .demo-block {
+        width: calc(50% - 20px); /* 保持2x2排列 */
+    }
+}
+
+@media (max-width: 480px) {
+    .demo-block {
+        width: calc(100% - 40px); /* 移动端下单列排列 */
+    }
+}
+
+</style>
+</html>

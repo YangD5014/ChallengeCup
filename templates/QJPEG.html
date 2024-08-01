@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Algorithm Denoising Demo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>量子图像压缩算法</h1>
+    </header>
+    <main>
+        <div class="upload-container">
+            <label for="upload-input" class="upload-label">点击上传图片</label>
+            <input type="file" id="upload-input" accept="image/*" onchange="previewImage(event)">
+            <div class="slider-container">
+                <label for="denoise-range">图像压缩等级</label>
+                <input type="range" id="denoise-range" min="0" max="16" value="50" onchange="updateDenoiseLevel(event)">
+                <span id="denoise-level">8</span>
+            </div>
+        </div>
+        <div class="image-container">
+            <div class="original-image">
+                <h2>原始图像</h2>
+                <img id="original-img" src="" alt="Original Image">
+            </div>
+            <div class="denoised-image">
+                <h2>压缩图像</h2>
+                <img id="denoised-img" src="" alt="Denoised Image">
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function previewImage(event) {
+            const input = event.target;
+            const reader = new FileReader();
+            reader.onload = function() {
+                const img = document.getElementById('original-img');
+                img.src = reader.result;
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+
+        function updateDenoiseLevel(event) {
+            const range = event.target.value;
+            const level = 16 - (range / 100) * 16;
+            document.getElementById('denoise-level').innerText = level.toFixed(2);
+        }
+    </script>
+</body>
+<style>
+    /* 基本样式重置 */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        background-color: #f4f4f4;
+        padding: 20px;
+    }
+
+    header {
+        background: #333;
+        color: #fff;
+        padding: 1rem 0;
+        text-align: center;
+    }
+
+    h1 {
+        margin-bottom: 0;
+    }
+
+    .upload-container {
+        text-align: center;
+        margin: 20px 0;
+    }
+
+    .upload-label {
+        display: inline-block;
+        background-color: #007BFF;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .upload-label:hover {
+        background-color: #0056b3;
+    }
+
+    #upload-input {
+        display: none;
+    }
+
+    .slider-container {
+        display: inline-block;
+        margin-left: 20px;
+        vertical-align: middle;
+    }
+
+    #denoise-range {
+        margin: 0 10px;
+        vertical-align: middle;
+    }
+
+    .image-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        gap: 20px;
+    }
+
+    .image-container div {
+        flex: 1 1 calc(50% - 40px);
+        text-align: center;
+    }
+
+    img {
+        max-width: 100%;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    @media (max-width: 768px) {
+        .image-container div {
+            flex: 1 1 calc(100% - 40px);
+        }
+    }
+</style>
+</html>
